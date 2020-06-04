@@ -15,6 +15,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var imageArray = ["I","L","T"]
     var textArray = ["インスタ","リンクト","ツイッタ"]
+
+    var characterArray = ["Photo","Profession","Message"]
+//    var douubleArray = [[String]]()
+    var trippleArray = [[String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +26,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.delegate = self
         tableView.dataSource = self
         
-        // selfはViewController →　正しい？
+//        douubleArray.append(imageArray)
+//        douubleArray.append(textArray)
+        
+        trippleArray.append(imageArray)
+        trippleArray.append(textArray)
+        trippleArray.append(characterArray)        // selfはViewController →　正しい？
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,7 +40,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
        
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return imageArray.count
+//        return douubleArray[section].count
+        return trippleArray[section].count
         //一つのSection内のCell数を返す：Returns the number of rows (table cells) in a specified section.　→　複数のSectionを使う場合の記法は？
      }
      
@@ -45,6 +55,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         cell.textLabel!.text = textArray[indexPath.row]
         cell.imageView!.image = UIImage(named: "\(imageArray[indexPath.row])")
+        cell.textLabel!.text = characterArray[indexPath.row]
         //　→ 変数の宣言ではないが”！”がつく。オプショナル型ではないとすれば、これは何か？
         
         
